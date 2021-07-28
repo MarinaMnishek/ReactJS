@@ -1,33 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import { ChatList } from './components/chatList';
-import { listChats } from './constants/consts';
-import { PersonChat } from './components/chat'
-
-
+import Router from './components/Router'
+import { Link } from 'react-router-dom'
 
 
 function App() {
-  
+
+  const [chats, setChats] = useState([
+    { id: 'chat1', name: 'Чат 1' },
+    { id: 'chat2', name: 'Чат 2' },
+    { id: 'chat3', name: 'Чат 3' },
+  ])
+  const [currentChat, setCurrentChat] = useState(chats[0])
+
+  const handleChangeChat = (chat) => setCurrentChat(chat)
+
+  const handleAddChat = (chatName) => {
+    setChats((currentChats) => [
+      ...currentChats,
+      { name: chatName, id: `chat${Date.now()}` },
+    ])
+  }
+
+  const handleRemoveChat = (chatId) => {
+    setChats((currentChats) =>
+      currentChats.filter((chat) => chat.id !== chatId)
+    )
+  }
+
+  const handleIsChatExists = React.useCallback(
+    (chatId) => {
+      return Boolean(chats.find((chat) => chat.id === chatId))
+    },
+    [chats]
+  )
+
 
   return (
 
     <div className="app">
-      
-      <div className="chats">
-        {/* <ul>
-          <li key="1"><button className="button-chat">Чат 1</button></li>
-          <li key="2"><button className="button-chat">Чат 2</button></li>
-          <li key="3"><button className="button-chat">Чат 3</button></li>
-          <li key="4"><button className="button-chat">Чат 4</button></li>
-        </ul> */}
-        <div className="chats-versin2">
-          <ChatList items={listChats} />
-        </div>
+      <div className="header">
+        <Link to="/">Home</Link>
+        <Link to="/chats">Chats </Link>
+        <Link to="/profile">Profile</Link>
       </div>
 
-      <PersonChat />
-      
+      <Router
+        chats={chats}
+        currentChat={currentChat}
+        onCurrentChatChange={handleChangeChat}
+        getIsChatExists={handleIsChatExists}
+        onAddChat={handleAddChat}
+        onRemoveChat={handleRemoveChat}
+      />
 
     </div >
 

@@ -8,10 +8,8 @@ import InputAddChat from './InputAddChat';
 
 
 
+ const Home = (props) => {
 
-export const ChatList = (props) => {
-
-   
     const {
         chats = [],
         currentChat,
@@ -32,7 +30,7 @@ export const ChatList = (props) => {
             <List subheader={<p>Список чатов</p>}>
 
                 {chats.map((chat) => (
-                    <div className="chat-item">
+                    <div className="chat-item"  key={chat.id}>
                         <ListItem
                             button
                             key={chat.id}
@@ -59,4 +57,4 @@ export const ChatList = (props) => {
 
 };
 
-
+export default Home

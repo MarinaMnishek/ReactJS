@@ -1,48 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import TextField from '@material-ui/core/TextField';
-// import './App.css';
+import '../App.css';
 import { AUTHORS } from '../constants/consts';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import Input from './Input';
+import { Redirect, useParams } from 'react-router'
 
-
-
-const useStyles = makeStyles({
-    buttonSend: {
-        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-        border: 0,
-        borderRadius: 7,
-        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-        color: 'white',
-        height: 48,
-        padding: '0 30px',
-        marginLeft: '30px',
-    },
-});
 
 function Message(props) {
     return <p><span>{props.author}:</span> {props.text}</p>
 }
 
 
-export const PersonChat = () => {
+export const PersonChat = (props) => {
+
+    const { getIsChatExists } = props
+    
+    const { chatId } = useParams()
 
     const [messages, setMessages] = useState([]);
-    const [newMessage, setNewMessage] = useState('');
+   
 
-
-    const classes = useStyles();
-
-    const handleMessageChange = (e) => {
-        setNewMessage(e.target.value)
-    }
-
-
-    const handleMessageSubmit = (e) => {
-        e.preventDefault()
-
-        setMessages((currentMessages) => [...currentMessages, { author: AUTHORS.ME, text: newMessage }])
-        setNewMessage('')
+    const handleMessageSubmit = (newMessageText) => {
+        setMessages((currentMessageList) => [
+            ...currentMessageList,
+            { author: AUTHORS.ME, text: newMessageText },
+        ])
     }
 
 
@@ -55,23 +36,20 @@ export const PersonChat = () => {
         }
     }, [messages])
 
+    const isChatExists = React.useMemo(
+        () => getIsChatExists(chatId),
+        [getIsChatExists, chatId]
+    )
+
+    if (!isChatExists) {
+        return <Redirect to="/chats" />
+    }
+
     return (
 
-        <div>
-            <form onSubmit={handleMessageSubmit}>
-                <TextField
-                    placeholder="Enter your message"
-                    required
-                    id="outlined-required"
-                    label="Message"
-                    variant="outlined"
-                    value={newMessage}
-                    onChange={handleMessageChange}
-                />
-                {/* <button className="button-send">SEND</button> */}
-                <Button className={classes.buttonSend}>SEND</Button>
-            </form>
-
+        <div className="chat__sendMessage">
+            
+        <Input onSubmit={handleMessageSubmit}/>
 
             <div>
                 {messages.map((msg, index) => (
