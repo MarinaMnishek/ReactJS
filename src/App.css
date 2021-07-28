@@ -1,67 +1,90 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+.header {
+  background-color: cornflowerblue;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;
+}
+.header a {
+  text-decoration: none;
+  color: black;
+  padding: 10px 0;
+  font-weight: 800;
+}
+.header a:hover{
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-/******************************************************/
-
-.chat {
-  max-width: 900px;
-  margin: 0 auto;
 }
 input {
   width: 220px;
   height: 30px;
 }
-.autor-input {
-  margin-top: 50px;
-  margin-bottom: 30px;
-}
-button {
-  margin-top: 30px;
+
+.button-send {
+  margin-top: 15px;
+  margin-left: 30px;
   background-color: cadetblue;
   width: 70px;
   height: 30px;
   border-radius: 15px;
 
 }
-button:hover{
+.button-send:hover{
   background-color: cornsilk;
 }
 span {
   font-style: italic;
   font-weight: 800;
+}
+li {
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+.button-chat {
+  width: 200px;
+  height: 50px;
+}
+
+.chats-versin2{
+  border: 1px solid black;
+  width: 200px;
+}
+
+.router-link{
+  margin: 50px 50px;
+  background-color: #ccc;
+}
+
+.chats {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding-top: 50px;
+}
+.chat-item {
+ display: flex;
+}
+ul {
+  min-width: 20%;
+}
+.chats-name {
+  font-size: 20px;
+  font-weight: 800;
+  font-style: italic;
+}
+.chat-item button {
+  border: 1px solid black;
+  font-size: 10px;
+  height: 25px;
+}
+.chat__sendMessage {
+  margin-top: 50px;
 }
