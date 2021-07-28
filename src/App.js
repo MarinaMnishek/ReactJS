@@ -1,56 +1,62 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState } from 'react';
 import './App.css';
-
-
+import Router from './components/Router'
+import { Link } from 'react-router-dom'
 
 
 function App() {
-  const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState({});
 
+  const [chats, setChats] = useState([
+    { id: 'chat1', name: 'Чат 1' },
+    { id: 'chat2', name: 'Чат 2' },
+    { id: 'chat3', name: 'Чат 3' },
+  ])
+  const [currentChat, setCurrentChat] = useState(chats[0])
 
-  const handleCLick = () => {
-    setMessages([...messages, newMessage]);
-    setNewMessage({ name: '', text: '' });
+  const handleChangeChat = (chat) => setCurrentChat(chat)
 
+  const handleAddChat = (chatName) => {
+    setChats((currentChats) => [
+      ...currentChats,
+      { name: chatName, id: `chat${Date.now()}` },
+    ])
   }
-  
-  useEffect(() => {
-    setTimeout(() => {
-      console.log('Сообщение обработано');
-    }, 1500);
-  }, [messages])
+
+  const handleRemoveChat = (chatId) => {
+    setChats((currentChats) =>
+      currentChats.filter((chat) => chat.id !== chatId)
+    )
+  }
+
+  const handleIsChatExists = React.useCallback(
+    (chatId) => {
+      return Boolean(chats.find((chat) => chat.id === chatId))
+    },
+    [chats]
+  )
 
 
   return (
-    <section className="chat">
-      <div className="autor-input">
-        <input
-          placeholder="Enter your name"
-          value={newMessage.name || ''}
-          onChange={e => setNewMessage({ ...newMessage, name: e.target.value })}
-        />
+
+    <div className="app">
+      <div className="header">
+        <Link to="/">Home</Link>
+        <Link to="/chats">Chats </Link>
+        <Link to="/profile">Profile</Link>
       </div>
-      <div>
-        <input
-          placeholder="Enter your message"
-          value={newMessage.text || ''}
-          onChange={e => setNewMessage({ ...newMessage, text: e.target.value })}
-        />
-      </div>
-      <button onClick={handleCLick}>SEND</button>
-      <h2>Chat:</h2>
-      {
-        messages.map(
-          (item) => (
-            <div key={item.text}>
-              <p><span>{item.name}: </span> {item.text}</p>
-            </div>
-          )
-        )
-      }
-    </section>
+
+      <Router
+        chats={chats}
+        currentChat={currentChat}
+        onCurrentChatChange={handleChangeChat}
+        getIsChatExists={handleIsChatExists}
+        onAddChat={handleAddChat}
+        onRemoveChat={handleRemoveChat}
+      />
+
+    </div >
+
+
   )
 };
 
