@@ -55,6 +55,7 @@ export default function Router(props) {
 
 
                 {/* <Route path="/profile"><p>Profile page</p></Route> */}
+                {/* <Route path="/profile" > <Profile /> </Route> */}
                 <Route path="/profile" component={Profile}></Route>
 
                 <Route><p>404: not found</p></Route>

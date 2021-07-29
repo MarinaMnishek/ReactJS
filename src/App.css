@@ -88,3 +88,15 @@ ul {
 .chat__sendMessage {
   margin-top: 50px;
 }
+.state {
+  padding-bottom: 40px;
+  border-bottom: 3px solid blue;
+}
+
+input[checkedB]{
+ height: 40px;
+}
+.change-nik {
+  font-weight: 800;
+  font-size: 24px;
+}
