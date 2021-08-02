@@ -1,39 +1,43 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import Router from './components/Router'
 import { Link } from 'react-router-dom'
+// import { useSelector } from 'react-redux';
 
 
 function App() {
 
-  const [chats, setChats] = useState([
-    { id: 'chat1', name: 'Чат 1' },
-    { id: 'chat2', name: 'Чат 2' },
-    { id: 'chat3', name: 'Чат 3' },
-  ])
-  const [currentChat, setCurrentChat] = useState(chats[0])
+  // const  chatList  = useSelector((state) => state.chatList)
 
-  const handleChangeChat = (chat) => setCurrentChat(chat)
 
-  const handleAddChat = (chatName) => {
-    setChats((currentChats) => [
-      ...currentChats,
-      { name: chatName, id: `chat${Date.now()}` },
-    ])
-  }
+  // const [chats, setChats] = useState([
+  //   { id: 'chat1', name: 'Чат 1' },
+  //   { id: 'chat2', name: 'Чат 2' },
+  //   { id: 'chat3', name: 'Чат 3' },
+  // ])
+  // const [currentChat, setCurrentChat] = useState(chatList[0])
 
-  const handleRemoveChat = (chatId) => {
-    setChats((currentChats) =>
-      currentChats.filter((chat) => chat.id !== chatId)
-    )
-  }
+  // const handleChangeChat = (chat) => setCurrentChat(chat)
 
-  const handleIsChatExists = React.useCallback(
-    (chatId) => {
-      return Boolean(chats.find((chat) => chat.id === chatId))
-    },
-    [chats]
-  )
+  // const handleAddChat = (chatName) => {
+  //   setChats((currentChats) => [
+  //     ...currentChats,
+  //     { name: chatName, id: `chat${Date.now()}` },
+  //   ])
+  // }
+
+  // const handleRemoveChat = (chatId) => {
+  //   setChats((currentChats) =>
+  //     currentChats.filter((chat) => chat.id !== chatId)
+  //   )
+  // }
+
+  // const handleIsChatExists = React.useCallback(
+  //   (chatId) => {
+  //     return Boolean(chats.find((chat) => chat.id === chatId))
+  //   },
+  //   [chats]
+  // )
 
 
   return (
@@ -46,12 +50,12 @@ function App() {
       </div>
 
       <Router
-        chats={chats}
-        currentChat={currentChat}
-        onCurrentChatChange={handleChangeChat}
-        getIsChatExists={handleIsChatExists}
-        onAddChat={handleAddChat}
-        onRemoveChat={handleRemoveChat}
+        // chats={chats}
+        // currentChat={currentChat}
+        // onCurrentChatChange={handleChangeChat}
+        // getIsChatExists={handleIsChatExists}
+        // onAddChat={handleAddChat}
+        // onRemoveChat={handleRemoveChat}
       />
 
     </div >
