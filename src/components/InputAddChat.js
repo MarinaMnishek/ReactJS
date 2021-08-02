@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles';
-
+// import { useSelector, useDispatch } from 'react-redux';
+// import { createChatList } from '../store/actions/chatListAction';
 
 
 const useStyles = makeStyles({
@@ -20,6 +21,7 @@ const useStyles = makeStyles({
 
 const InputAddChat = (props) => {
     const { onSubmit } = props
+
 
     const classes = useStyles();
 

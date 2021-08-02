@@ -37,7 +37,7 @@ export const Profile = (props) => {
                     <p><b>Nik: </b>{nikName}</p>
                 </div>
                 <Input onSubmit={handleChangeName} />
-                {/* <hr /> */}
+                
             </div>
 
             <FormControlLabel

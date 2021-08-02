@@ -18,12 +18,12 @@ export default function Router(props) {
                     exact
                     render={() => (
                         <Home
-                            chats={props.chats}
-                            currentChat={props.currentChat}
-                            onCurrentChatChange={props.onCurrentChatChange}
-                            getIsChatExists={props.getIsChatExists}
-                            onAddChat={props.onAddChat}
-                            onRemoveChat={props.onRemoveChat}
+                            // chats={props.chats}
+                            // currentChat={props.currentChat}
+                            // onCurrentChatChange={props.onCurrentChatChange}
+                            // getIsChatExists={props.getIsChatExists}
+                            // onAddChat={props.onAddChat}
+                            // onRemoveChat={props.onRemoveChat}
                         />
                     )}
                 />
@@ -35,12 +35,12 @@ export default function Router(props) {
                     path="/chats"
                     render={() => (
                         <ChatList
-                            chats={props.chats}
-                            currentChat={props.currentChat}
-                            onCurrentChatChange={props.onCurrentChatChange}
-                            getIsChatExists={props.getIsChatExists}
-                            onAddChat={props.onAddChat}
-                            onRemoveChat={props.onRemoveChat}
+                            // chats={props.chats}
+                            // currentChat={props.currentChat}
+                            // onCurrentChatChange={props.onCurrentChatChange}
+                            // getIsChatExists={props.getIsChatExists}
+                            // onAddChat={props.onAddChat}
+                            // onRemoveChat={props.onRemoveChat}
                         />
                     )}
                 >
@@ -49,8 +49,9 @@ export default function Router(props) {
 
                 
 
-                <Route path="/chats/:chatId" render={() => {
-                    return <PersonChat getIsChatExists={props.getIsChatExists} />
+                <Route path="/chats/:chatId" 
+                render={() => { return <PersonChat  />
+                
                 }} />
 
 
