@@ -1,12 +1,12 @@
 import React from 'react';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import '../App.css';
-import { AUTHORS } from '../constants/consts';
+// import { AUTHORS } from '../constants/consts';
 import Input from './Input';
 // import { Redirect } from 'react-router'
 import { useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux'
-import { addMessage } from '../store/actions/chatAction';
+import { addMessage, addMessageWithThunk } from '../store/actions/chatAction';
 import uuid from 'react-uuid'
 
 function Message(props) {
@@ -21,9 +21,10 @@ export const PersonChat = (props) => {
     const { name,  nikName } = useSelector((state) => state.profile)
     const dispatch = useDispatch()
 
+   
     const handleAddMessage = (newMessage) => {
         dispatch(
-            addMessage(chatId, {
+            addMessageWithThunk(chatId, {
                 id: uuid(),
                 author: `${name} ( ${nikName} )`,
                 text: newMessage,
@@ -31,6 +32,8 @@ export const PersonChat = (props) => {
         )
     }
 
+
+//_______________________________________________________________________________
 
     // const { getIsChatExists } = props
 

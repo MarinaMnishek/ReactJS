@@ -87,6 +87,7 @@ ul {
 }
 .chat__sendMessage {
   margin-top: 50px;
+  margin-left: 50px;
 }
 .state {
   padding-bottom: 40px;

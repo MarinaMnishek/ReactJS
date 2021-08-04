@@ -17,14 +17,7 @@ export default function Router(props) {
                     path="/"
                     exact
                     render={() => (
-                        <Home
-                            // chats={props.chats}
-                            // currentChat={props.currentChat}
-                            // onCurrentChatChange={props.onCurrentChatChange}
-                            // getIsChatExists={props.getIsChatExists}
-                            // onAddChat={props.onAddChat}
-                            // onRemoveChat={props.onRemoveChat}
-                        />
+                        <Home  />
                     )}
                 />
 
@@ -34,14 +27,7 @@ export default function Router(props) {
                     exact
                     path="/chats"
                     render={() => (
-                        <ChatList
-                            // chats={props.chats}
-                            // currentChat={props.currentChat}
-                            // onCurrentChatChange={props.onCurrentChatChange}
-                            // getIsChatExists={props.getIsChatExists}
-                            // onAddChat={props.onAddChat}
-                            // onRemoveChat={props.onRemoveChat}
-                        />
+                        <ChatList />
                     )}
                 >
 
@@ -54,9 +40,6 @@ export default function Router(props) {
                 
                 }} />
 
-
-                {/* <Route path="/profile"><p>Profile page</p></Route> */}
-                {/* <Route path="/profile" > <Profile /> </Route> */}
                 <Route path="/profile" component={Profile}></Route>
 
                 <Route><p>404: not found</p></Route>
