@@ -19,6 +19,7 @@ function App() {
         <Link to="/">Home</Link>
         <Link to="/chats">Chats </Link>
         <Link to="/profile">Profile</Link>
+        <Link to="/someAPI">Try to work with API</Link>
       </div>
 
       <Router

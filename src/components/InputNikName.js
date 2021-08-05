@@ -48,12 +48,12 @@ const InputNikName = (props) => {
                 placeholder="Enter your new Nik-Name"
                 required
                 autoFocus
-                id="outlined-required"
+                id="NikName"
                 label="Your Nik"
                 variant="outlined"
                 value={inputValue}
                 onChange={handleChange}
-                
+               
             />
 
             <Button type="submit" className={classes.buttonSend}>Replace</Button>

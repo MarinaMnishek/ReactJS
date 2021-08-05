@@ -1,5 +1,5 @@
 import { ADD_MESSAGE } from "../actions/chatAction";
-import { AUTHORS } from "../../constants/consts";
+// import { AUTHORS } from "../../constants/consts";
 
 const initialState = {
     // chat1: [

@@ -86,9 +86,9 @@ const Home = () => {
         <div className="chats">
             <List subheader={<p>Список чатов</p>}>
 
-                {Object.values(chats).map((chat) => (
+                {Object.values(chats).map((chat,i) => (
 
-                    <div className="chat-item" key={chat.toString()}>
+                    <div className="chat-item" key={i}>
 
                         <ListItem
                             button

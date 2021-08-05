@@ -6,7 +6,8 @@ import Input from './Input';
 // import { Redirect } from 'react-router'
 import { useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux'
-import { addMessage, addMessageWithThunk } from '../store/actions/chatAction';
+// import { addMessage } from '../store/actions/chatAction';
+import { addMessageWithThunk } from '../store/actions/chatAction';
 import uuid from 'react-uuid'
 
 function Message(props) {
@@ -71,10 +72,11 @@ export const PersonChat = (props) => {
             <Input onSubmit={handleAddMessage} />
             {
                 <div>
-                    {messageList.map((msg) => (
+                    {messageList.map((msg, i) => (
 
                         <Message
-                            key={msg.toString()}
+                            // key={msg.toString()}
+                            key={i}
                             text={msg.text}
                             author={msg.author}
                         />
