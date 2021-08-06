@@ -6,6 +6,7 @@ import Home from './Home'
 import { ChatList } from './chatList'
 import { Profile } from './profile'
 import { SomeAPI } from './somethingWithAPI'
+import { Numbers } from './numbers'
 
 
 export default function Router(props) {
@@ -23,6 +24,8 @@ export default function Router(props) {
                 <Route path="/profile" component={Profile}></Route>
 
                 <Route path="/someAPI" component={ SomeAPI }></Route>
+
+                <Route path="/numbers" component={ Numbers }></Route>
 
                 <Route><p>404: not found</p></Route>
 

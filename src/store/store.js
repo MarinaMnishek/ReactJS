@@ -5,7 +5,7 @@ import storage from 'redux-persist/lib/storage'
 import profileReducer from './reducers/profileReducer'
 import chatListReducer from './reducers/chatListReducer'
 import chatReducer from './reducers/chatReducer'
-
+import numbersReducer from './reducers/numbersReducer'
 
 
 const persistConfig = {
@@ -17,6 +17,7 @@ const rootReducer = combineReducers({
     profile: profileReducer,
     chatList: chatListReducer,
     chat: chatReducer,
+    numbers: numbersReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
