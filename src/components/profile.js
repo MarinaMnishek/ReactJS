@@ -37,22 +37,23 @@ export const Profile = (props) => {
                     <p><b>Nik: </b>{nikName}</p>
                 </div>
                 <Input onSubmit={handleChangeName} />
-                
+
             </div>
+            <div className="state">
+                <FormControlLabel
+                    control={
+                        <Checkbox
+                            checked={isNik}
+                            onChange={handleIsNikChange}
+                            name="checkedB"
+                            color="primary"
+                        />
+                    }
+                    label={<p className="change-nik">Хотите изменить Nik?</p>}
+                />
 
-            <FormControlLabel
-                control={
-                    <Checkbox
-                        checked={isNik}
-                        onChange={handleIsNikChange}
-                        name="checkedB"
-                        color="primary"
-                    />
-                }
-                label={<p className="change-nik">Хотите изменить Nik?</p>}
-            />
-
-            <InputNikName onSubmit={handleChangeNikName} />
+                <InputNikName onSubmit={handleChangeNikName} />
+            </div>
         </div>
 
     )
