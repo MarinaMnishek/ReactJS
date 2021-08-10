@@ -8,10 +8,11 @@
 }
 .header {
   background-color: cornflowerblue;
-  height: 200px;
+  height: max-content;
   display: flex;
   flex-direction: column;
-  padding-left: 50px;
+  padding: 30px 50px;
+  
 }
 .header a {
   text-decoration: none;
@@ -106,6 +107,37 @@ input[checkedB]{
 .error {
   color: red;
 }
+.number {
+  margin-left: 50px;
+  margin-top: 50px;
+}
 .numbers {
   display: flex;
+}
+
+.login {
+  margin-left: 50px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-input {
+  width: 35%;
+  
+}
+.login-button{
+  margin-top: 20px;
+  margin-right: 20px;
+  height: 50px;
+  padding: 15px 20px;
+}
+.button-signout{
+  width: max-content;
+  padding: 5px 15px;
+  border-radius: 15px;
+  background-color: rgb(240, 243, 248);
+}
+.button-signout:hover {
+  background-color: rgb(114, 146, 206);
 }

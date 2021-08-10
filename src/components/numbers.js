@@ -25,7 +25,7 @@ export const Numbers = () => {
     const classes = useStyles();
 
 
-const { facts, factsList, condition } = useSelector((state) => state.numbers)
+    const { facts, factsList, condition } = useSelector((state) => state.numbers)
     // const numberList = useSelector((state) => state.numbers)
     console.log(facts)
     console.log(factsList)
@@ -44,7 +44,7 @@ const { facts, factsList, condition } = useSelector((state) => state.numbers)
     // if (condition === NUMBERS_CONDITION.LOADING) {
 
     //     return (
-    //         <div>
+    //         <div className="number">
     //             <p>Loading...</p>
     //             <LinearWithValueLabel />
     //         </div>
@@ -54,7 +54,7 @@ const { facts, factsList, condition } = useSelector((state) => state.numbers)
     function List(props) {
         return <p><span>{facts.number}:</span> {facts.text}</p>
     }
-    return (<div className="numbers">
+    return (<div className="numbers number">
         <div>
 
             <h3>Some facts of Numbers</h3>
