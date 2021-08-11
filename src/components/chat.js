@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import { useEffect } from 'react';
 import '../App.css';
 // import { AUTHORS } from '../constants/consts';
@@ -7,8 +7,13 @@ import Input from './Input';
 import { useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux'
 // import { addMessage } from '../store/actions/chatAction';
-import { addMessageWithThunk } from '../store/actions/chatAction';
+// import { addMessageWithThunk } from '../store/actions/chatAction';
+import { addMessageWithFirebase } from '../store/actions/chatAction';
+import { addMessageFromBot } from '../store/actions/chatAction'
 import uuid from 'react-uuid'
+import firebase from 'firebase'
+
+
 
 function Message(props) {
     return <p><span>{props.author}:</span> {props.text}</p>
@@ -22,16 +27,21 @@ export const PersonChat = (props) => {
     const { name,  nikName } = useSelector((state) => state.profile)
     const dispatch = useDispatch()
 
-   
-    const handleAddMessage = (newMessage) => {
-        dispatch(
-            addMessageWithThunk(chatId, {
-                id: uuid(),
-                author: `${name} ( ${nikName} )`,
-                text: newMessage,
-            })
-        )
-    }
+   useEffect(()=>{
+       dispatch(addMessageWithFirebase(chatId))
+   }, [])
+
+
+   const handleAddMessage = (newMessage) => {
+    dispatch(
+        addMessageFromBot(chatId, {
+            id: uuid(),
+            author: `${name} ( ${nikName} )`,
+            text: newMessage,
+        })
+    )
+}
+
 
 
 //_______________________________________________________________________________
