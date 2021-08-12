@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect }  from 'react';
 import '../App.css';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -6,7 +6,10 @@ import { useHistory } from 'react-router'
 import { Button } from '@material-ui/core'
 import InputAddChat from './InputAddChat';
 import { useSelector, useDispatch } from 'react-redux';
-import { createChatList, deleteChatList } from '../store/actions/chatListAction';
+// import { createChatList, deleteChatList } from '../store/actions/chatListAction';
+import { createChatListInDatabase,
+    deleteChatListFromDatabase,
+    addChatListWithFirebase } from '../store/actions/chatListAction';
 import uuid from 'react-uuid'
 
 
@@ -16,19 +19,28 @@ export const ChatList = () => {
 
 
     const chats = useSelector((state) => state.chatList)
+
     const history = useHistory()
 
     const dispatch = useDispatch()
+
     const handleAddChat = (chat) => {
         history.push(`/chats/${chat.id}`)
     }
 
+    useEffect(()=>{
+        dispatch(addChatListWithFirebase())
+    }, [])
+
     const addChat = (name) => {
-        dispatch(createChatList(uuid(), name))
+        dispatch(createChatListInDatabase(uuid(), name))
     }
-    const handleDeleteChat = (id) => {
-        dispatch(deleteChatList(id))
+    const handleDeleteChat = (chatId) => {
+        dispatch(deleteChatListFromDatabase(chatId))
     }
+
+
+    
 
     return (
 
