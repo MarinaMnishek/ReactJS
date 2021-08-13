@@ -58,7 +58,7 @@ export const SomeAPI = () => {
 
 
     return (
-        <div>
+        <div className="number">
 
             <h3>Some facts of Numbers</h3>
             <Button className={classes.buttonNumber} onClick={randomNumber}>Number</Button>
