@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import '../App.css';
 // import { AUTHORS } from '../constants/consts';
 import Input from './Input';
+import  Message  from './message';
 // import { Redirect } from 'react-router'
 import { useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux'
@@ -15,13 +16,13 @@ import firebase from 'firebase'
 
 
 
-function Message(props) {
-    return <p><span>{props.author}:</span> {props.text}</p>
-}
+// function Message(props) {
+//     return <p><span>{props.author}:</span> {props.text}</p>
+// }
 
 
 export const PersonChat = (props) => {
-
+ 
     const { chatId } = useParams()
     const messageList = useSelector((state) => state.chat[chatId] || [])
     const { name,  nikName } = useSelector((state) => state.profile)

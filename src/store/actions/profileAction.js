@@ -32,11 +32,11 @@ export const changeIsAuthed = (isAuthed) => ({
 })
 
 
-export const changeNameInDatabase = (name) => {
-    return () => {
-        firebase.database().ref('profile').child(name).update({name})
-    }
-}
+// export const changeNameInDatabase = (name) => {
+//     return () => {
+//         firebase.database().ref('profile').child(name).update({name})
+//     }
+// }
 
 // export const changeNameInDatabase = (name) => {
 //     return async (dispatch) => {
@@ -49,14 +49,14 @@ export const changeNameInDatabase = (name) => {
 //     }
 // }
 
-export const changeNameWithFirebase = (name) => {
-    return (dispatch, getState) => {
-        firebase.database().ref('profile').child(name).on('child_added', (snapshot) => {
-            dispatch(changeName(snapshot.val()))
-        })
+// export const changeNameWithFirebase = (name) => {
+//     return (dispatch, getState) => {
+//         firebase.database().ref('profile').child(name).on('child_added', (snapshot) => {
+//             dispatch(changeName(snapshot.val()))
+//         })
 
-        firebase.database().ref('profile').child(name).on('child_changed', (snapshot) => {
-            dispatch(changeName(snapshot.val()))
-        })
-    }
-}
+//         firebase.database().ref('profile').child(name).on('child_changed', (snapshot) => {
+//             dispatch(changeName(snapshot.val()))
+//         })
+//     }
+// }
