@@ -1,7 +1,7 @@
 import React, { useEffect }  from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeName, changeIsNik, changeNikName } from '../store/actions/profileAction';
-import { changeNameInDatabase, changeNameWithFirebase} from '../store/actions/profileAction'
+// import { changeNameInDatabase, changeNameWithFirebase} from '../store/actions/profileAction'
 import '../App.css';
 import Input from './Input';
 import InputNikName from './InputNikName';
@@ -14,18 +14,18 @@ export const Profile = (props) => {
 
     const { name, age, isNik, nikName } = useSelector((state) => state.profile)
 
-    // const handleChangeName = (newName) => {
-    //     dispatch(changeName(newName))
-    // }
-   
-    useEffect(()=>{
-        console.log(name)
-        dispatch(changeNameWithFirebase(name))
-    }, [name])
-
     const handleChangeName = (newName) => {
-        dispatch(changeNameInDatabase(newName))
+        dispatch(changeName(newName))
     }
+   
+    // useEffect(()=>{
+    //     console.log(name)
+    //     dispatch(changeNameWithFirebase(name))
+    // }, [name])
+
+    // const handleChangeName = (newName) => {
+    //     dispatch(changeNameInDatabase(newName))
+    // }
 
     const handleIsNikChange = (e) => {
         dispatch(changeIsNik(e.target.checked))
